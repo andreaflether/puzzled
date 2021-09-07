@@ -3,31 +3,46 @@
     Sign up
   <% end %>
 
-  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= render 'devise/shared/error_messages', resource: resource %>
+  <div class="ui form <%= "error" if resource.errors.any? %>">
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), autocomplete: 'off') do |f| %>
+      <%= devise_error_messages! %>
 
-    <%= f.input :name %>
+      <%= f.input :email,
+          autocomplete: 'off', 
+          placeholder: 'example@mail.com', 
+          required: true %>
 
-    <%= f.input :email %>
+      <div class="two fields">
+        <%= f.input :name, 
+            autocomplete: 'off',
+            placeholder: 'Full name' %>
 
-    <div class="row">
-      <div class="col-md-6">
+        <%= f.input :username,
+        placeholder: 'Username' %>
+      </div>
+
+      <div class="two fields">
         <%= f.input :password, 
-            hint: "#{@minimum_password_length} characters minimum" %>
-      </div>
-      <div class="col-md-6">
-        <%= f.input :password_confirmation %>
-      </div>
-    </div>
+            autocomplete: 'off',
+            placeholder: "Password",
+            required: true %>
 
-    <div class="input-group">
-      <%= f.submit 'Sign up', class: 'btn btn-primary btn-block' %>
-    </div>
+        <%= f.input :password_confirmation, 
+          autocomplete: 'off',
+          required: true,
+          placeholder: 'Password confirmation' %>
+      </div>
+
+      <div class="ui one column center aligned grid">
+        <div class="sixteen wide column">
+          <%= button_tag class: 'ui justified right submit button primary' do %>
+            <i class="users icon"></i> Sign up 
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+    
+    <%= render 'devise/shared/links' %>
   <% end %>
-
-  <hr class="mt-4" />
-
-  <%= render 'devise/shared/links' %>
-<% end %>
 
 <%= render 'devise/shared/form_wrap' %>

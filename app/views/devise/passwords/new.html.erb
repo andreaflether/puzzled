@@ -1,21 +1,41 @@
+
+
 <% content_for :devise_form do %>
   <% content_for :page_title do %>
     Forgot your password?
   <% end %>
 
   <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-    <%= render 'devise/shared/error_messages', resource: resource %>
+    <div class="ui form info">
+      <div class="ui info message">
+        <p>
+          Enter the email address you used when you joined and we’ll send you instructions 
+          to reset your password.
+        </p>
 
-    <%= f.input :email %>
+        <p>
+          For security reasons, we do NOT store your password. 
+          So rest assured that we will never send your password via email.
+        </p>
+      </div>
+    </div>
 
-    <div class="input-group">
-      <%= f.submit 'Send me reset password instructions', class: 'btn btn-primary btn-block' %>
+    <br />
+
+    <%= devise_error_messages! %>
+
+    <%= f.input :email,
+        wrapper: :semantic_icon_input,
+        left_icon: 'envelope' %>
+
+    <div class="ui one column center aligned grid">
+      <div class="sixteen wide column">
+        <%= button_tag class: 'ui justified right submit button primary' do %>
+          <i class="paper plane icon"></i> Send reset instructions
+        <% end %>
+      </div>
     </div>
   <% end %>
-
-  <hr class="mt-4" />
-  
-  <%= render 'devise/shared/links' %>
 <% end %>
 
 <%= render 'devise/shared/form_wrap' %>

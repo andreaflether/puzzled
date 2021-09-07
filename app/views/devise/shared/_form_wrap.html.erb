@@ -1,10 +1,11 @@
-<div class="row justify-content-center">
-  <div class="col-md-5">
-    <div class="card shadow mt-5">
-      <div class="card-body">
-        <h2 class="text-center mb-3"><%= yield :page_title %></h2>
-        <%= yield :devise_form %>
-      </div>
+<div class="ui relaxed equal width centered grid">
+  <div class="ui row">
+    <div class="ui five wide column segment">
+      <h2 class="ui center aligned dividing header">
+        <%= yield :page_title %>
+      </h2>
+      
+      <%= yield :devise_form %>
     </div>
   </div>
 </div>

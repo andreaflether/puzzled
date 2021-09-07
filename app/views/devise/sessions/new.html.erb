@@ -3,23 +3,27 @@
     Sign in
   <% end %>
 
-  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <%= f.input :email %>
+  <div class="ui form">
+    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= f.input :email,
+          wrapper: :semantic_icon_input,
+          left_icon: 'user' %>
 
-    <%= f.input :password %>
+      <%= f.input :password,
+          wrapper: :semantic_icon_input,
+          left_icon: 'lock' %>
 
-    <div class="input-group justify-content-center">
-      <% if devise_mapping.rememberable? -%>
-        <%= f.input :remember_me, as: :boolean, wrapper: :custom_boolean %>
-      <% end %>
-    </div>
+      <div class="ui one column center aligned grid">
+        <div class="sixteen wide column">
+          <% if devise_mapping.rememberable? -%>
+            <%= f.input :remember_me, as: :boolean, wrapper: :semantic_checkbox %>
+          <% end %>
+          <%= f.submit 'Log in', class: 'ui submit button primary' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 
-    <div class="input-group">
-      <%= f.submit 'Log in', class: 'btn btn-primary btn-block' %>
-    </div>
-  <% end %>
-
-  <hr class="mt-4" />
   <%= render 'devise/shared/links' %>
 <% end %>
 

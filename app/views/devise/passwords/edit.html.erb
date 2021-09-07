@@ -1,27 +1,35 @@
+
 <% content_for :devise_form do %>
   <% content_for :page_title do %>
-    Change your password
+    Change password
   <% end %>
 
-  <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-    <%= render 'devise/shared/error_messages', resource: resource %>
+  <div class="ui form <%= "error" if resource.errors.any? %>">
+    <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+    
+    <%= devise_error_messages! %>
 
-    <%= f.hidden_field :reset_password_token %>
-
+    <%= f.input :reset_password_token, as: :hidden %>
+  
     <%= f.input :password, 
-        hint: "#{@minimum_password_length} characters minimum",
-        placeholder: 'Your new password' %>
+        autocomplete: 'off', 
+        placeholder: 'Enter new password' %>
 
-    <%= f.input :password_confirmation, placeholder: 'Confirm new password' %>
+    <%= f.input :password_confirmation, 
+        autocomplete: 'off' , 
+        placeholder: 'Confirm new password' %>
 
-    <div class="input-group">
-      <%= f.submit 'Change my password', class: 'btn btn-primary btn-block' %>
-    </div>
-  <% end %>
+      <div class="ui one column center aligned grid">
+        <div class="sixteen wide column">
+          <%= button_tag class: 'ui justified right submit button primary' do %>
+            <i class="check circle icon"></i> Change my password
+          <% end %>
+        </div>
+      </div>
+    <% end %>
 
-  <hr class="mt-4" />
-
-  <%= render 'devise/shared/links' %>
+    <%= render "devise/shared/links" %>
+  </div>
 <% end %>
 
 <%= render 'devise/shared/form_wrap' %>
