@@ -1,0 +1,13 @@
+en:
+  app_titles:
+    defaults:
+      grids:
+        create: &grids_create Submit Grid
+        update: &grids_update Edit Grid Info
+    grids:
+      new: *grids_create
+      create: *grids_create
+      edit: *grids_update
+      update: *grids_update
+      index: Browse Grids
+      best: Best Grids

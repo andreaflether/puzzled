@@ -1,19 +1,42 @@
-<nav class="navbar navbar-dark bg-dark">
-  <%= link_to root_path, class: 'navbar-brand' do %>
-    <%= image_tag 'https://getbootstrap.com/docs/4.6/assets/brand/bootstrap-solid.svg',
-        width: 30, 
-        height: 30 %>
-    Kickoff
+<div class="ui stackable menu">
+  <%= link_to root_path do %>
+    <div class="item">
+      <%= image_tag 'logo.png' %>
+    </div>
   <% end %>
-  <div class="ml-auto">
+
+  <%= active_link_to 'Browse grids', grids_path, class: 'item', active: :exclusive %>
+  <%= active_link_to 'Best grids', best_grids_path, class: 'item', active: :exclusive %>
+  
+  <%= active_link_to 'Submit grid', new_grid_path, class: 'item', active: :exclusive if user_signed_in? %>
+  
+  <div class="right menu">
+    <div class="item">
+      <div class="ui icon input">
+        <input type="text" placeholder="Search...">
+        <i class="search link icon"></i>
+      </div>
+    </div>
+
     <% if user_signed_in? %>
-      <%= link_to 'Sign out', 
-          destroy_user_session_path, 
-          method: :delete,
-          class: 'btn btn-secondary' %>
+      <div class="ui dropdown icon item">
+        <i class="user icon"></i>&nbsp; <%= current_user.name.first %>
+
+        <div class="menu">
+          <div class="item">
+            <i class="edit icon"></i> Edit info
+          </div>
+
+          <%= link_to destroy_user_session_path,
+              method: :delete, 
+              class: 'item' do %>
+            <i class="sign out alternate icon"></i> Sign out 
+          <% end %>
+        </div>
+      </div>
+        
     <% else %>
-      <%= link_to 'Login', new_user_session_path, class: 'btn btn-outline-light' %>
-      <%= link_to 'Sign up', new_user_registration_path, class: 'btn btn-primary' %>
+      <%= link_to 'Sign in', new_user_session_path, class: 'ui item' %>
     <% end %>
   </div>
-</nav>
+</div>
