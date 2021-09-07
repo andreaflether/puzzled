@@ -12,7 +12,7 @@
   <dt>Difficulty:</dt>
   <dd><%= @grid.difficulty %></dd>
   <dt>Nationality:</dt>
-  <dd><%= @grid.nationality %></dd>
+  <dd><i class="<%= @grid.nationality.downcase %> flag"></i><%= @grid.nationality %></dd>
   <dt>User:</dt>
   <dd><%= @grid.user %></dd>
 </dl>

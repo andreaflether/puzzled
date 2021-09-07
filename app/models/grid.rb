@@ -3,8 +3,8 @@
 # Table name: grids
 #
 #  id          :integer          not null, primary key
-#  difficulty  :integer          default("medium")
-#  nationality :integer
+#  difficulty  :integer          default("medium"), not null
+#  nationality :string(2)        not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  user_id     :integer          not null
@@ -29,5 +29,5 @@ class Grid < ApplicationRecord
   }
 
   validates :difficulty, presence: true
-  validates :nationality, presence: true
+  validates :nationality, presence: true, length: { is: 2, allow_blank: true }
 end

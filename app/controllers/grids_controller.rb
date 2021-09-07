@@ -1,14 +1,19 @@
 class GridsController < ApplicationController
-  before_action :set_grid, only: %i[ show edit update destroy ]
+  before_action :set_grid, only: %i[show edit update destroy]
+  before_action :authenticate_user!, except: %i[index best show]
 
   # GET /grids or /grids.json
   def index
     @grids = Grid.all
   end
 
-  # GET /grids/1 or /grids/1.json
-  def show
+  # GET /grids/best
+  def best
+    @grids = Grid.all
   end
+
+  # GET /grids/1 or /grids/1.json
+  def show; end
 
   # GET /grids/new
   def new
@@ -16,12 +21,12 @@ class GridsController < ApplicationController
   end
 
   # GET /grids/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /grids or /grids.json
   def create
     @grid = Grid.new(grid_params)
+    @grid.user = current_user
 
     respond_to do |format|
       if @grid.save
