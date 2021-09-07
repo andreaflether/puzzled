@@ -1,23 +1,26 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.1'
+ruby '3.0.1'
 
 gem 'rails', '~> 6.1.3'
 
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'jbuilder', '~> 2.7'
 gem 'puma', '~> 5.0'
+gem 'rexml', '~> 3.2', '>= 3.2.4'
 gem 'sass-rails', '>= 6'
 gem 'sqlite3', '~> 1.4'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 5.0'
 
 # Custom gems for this application
+gem 'active_link_to'
 gem 'acts-as-taggable-on', '~> 7.0'
 gem 'country_select', '~> 6.0'
 gem 'devise'
 gem 'enum_help'
+gem 'meta-tags'
 gem 'name_of_person'
 gem 'simple_form'
 
@@ -28,7 +31,7 @@ end
 group :development do
   gem 'annotate'
   gem 'listen', '~> 3.3'
-  gem 'rack-mini-profiler', '~> 2.0'
+  # gem 'rack-mini-profiler', '~> 2.0'
   gem 'spring'
   gem 'web-console', '>= 4.1.0'
 end
