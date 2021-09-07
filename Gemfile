@@ -14,6 +14,7 @@ gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 5.0'
 
 # Custom gems for this application
+gem 'acts-as-taggable-on', '~> 7.0'
 gem 'country_select', '~> 6.0'
 gem 'devise'
 gem 'enum_help'
