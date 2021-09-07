@@ -13,8 +13,8 @@
 ActiveRecord::Schema.define(version: 2021_09_07_010842) do
 
   create_table "grids", force: :cascade do |t|
-    t.integer "difficulty", default: 3
-    t.integer "nationality"
+    t.integer "difficulty", default: 3, null: false
+    t.string "nationality", limit: 2, null: false
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
