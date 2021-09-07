@@ -34,5 +34,8 @@ module Puzzled
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # Default locale (i18n)
+    config.i18n.default_locale = :en
   end
 end
