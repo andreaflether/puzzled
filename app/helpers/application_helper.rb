@@ -2,7 +2,16 @@ module ApplicationHelper
   def custom_flash_messages
     html_script = '<script>'
     flash.each do |type, message|
-      html_script += "toastr[\"#{toastr_class_for(type)}\"](\"#{message}\");" if message
+      if message
+        html_script += <<~EOS 
+          $('body').toast({
+            position: 'top center',
+            class: \"#{toast_class_for(type)}\",
+            message: \"#{message}\",
+            displayTime: 5000
+          });
+        EOS
+      end
     end
     html_script += '</script>'
     flash_present = flash.to_h.any?
@@ -10,7 +19,7 @@ module ApplicationHelper
     flash_present ? html_script.html_safe : ''
   end
 
-  def toastr_class_for(flash_type)
+  def toast_class_for(flash_type)
     type = {
       success: 'success',
       error: 'error',
