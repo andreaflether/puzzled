@@ -8,13 +8,18 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
+require('fomantic-ui')
+import 'fomantic-ui/dist/semantic.min.css'
+import '@fortawesome/fontawesome-free/css/all'
+import toastr from 'toastr'
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
-
-require('bootstrap/dist/js/bootstrap.bundle.min')
-import toastr from 'toastr'
 global.toastr = toastr
 
+// require('bootstrap/dist/js/bootstrap.bundle.min')
+
+require('./general')
 import 'stylesheets/application'
-import '@fortawesome/fontawesome-free/css/all'
+
