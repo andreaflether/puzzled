@@ -1,0 +1,18 @@
+<div class="page-header">
+  <%= link_to grids_path, class: 'btn btn-light' do %>
+    All Grids
+  <% end %>
+  <%= link_to edit_grid_path(@grid), class: 'btn btn-primary' do %>
+    Edit
+  <% end %>
+  <h1>Show grid</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Difficulty:</dt>
+  <dd><%= @grid.difficulty %></dd>
+  <dt>Nationality:</dt>
+  <dd><%= @grid.nationality %></dd>
+  <dt>User:</dt>
+  <dd><%= @grid.user %></dd>
+</dl>

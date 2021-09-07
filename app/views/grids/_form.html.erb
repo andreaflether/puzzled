@@ -1,0 +1,38 @@
+<%= simple_form_for(grid) do |f| %>
+  <% if grid.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(grid.errors.count, "error") %> prohibited this grid from being saved:
+      </h2>
+
+      <ul>
+      <% grid.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.input :difficulty, collection: Grid.difficulties_i18n, include_blank: false %>
+
+  <div class="form-group">
+    <%= f.label :nationality %>
+    <%= f.country_select :nationality, {}, class: 'form-control' %>
+  </div>
+
+  <div class="mb-3">
+    <% if grid.persisted? %>
+      <div class="float-right">
+        <%= link_to 'Destroy', grid, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure?' } %>
+      </div>
+    <% end %>
+
+    <%= f.button :submit, class: 'btn btn-primary' %>
+
+    <% if grid.persisted? %>
+      <%= link_to "Cancel", grid, class: "btn btn-light" %>
+    <% else %>
+      <%= link_to "Cancel", grids_path, class: "btn btn-light" %>
+    <% end %>
+  </div>
+<% end %>
